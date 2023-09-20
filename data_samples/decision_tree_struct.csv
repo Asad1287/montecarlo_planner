@@ -1,0 +1,17 @@
+root,A
+A,B,C
+B,D,E
+C,F,G
+D,A1,A2
+E,B1,B2
+F,C1,C2
+G,D1,D2
+A1,end 
+A2,end
+B1,end
+B2,end
+C1,end
+C2,end
+D1,end
+D2,end
+```

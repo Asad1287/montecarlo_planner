@@ -1,0 +1,11 @@
+Project,RiskID,WBS,ProjectTime,RiskDescription,Variable1,FreqMax,FreqMin,Variable2,Expression
+Drug Discovery,1,Research,1460,Unsuccessful clinical trials,"NORM(200,1)",600,50,"NORM(1E6,2E5)",Variable1 * Variable2
+Drug Discovery,2,Research,1460,Patent issues,"NORM(300,50)",900,100,"NORM(5E5,1E5)",Variable1 * Variable2
+Drug Discovery,3,Development,1460,Regulatory delays,"NORM(250,40)",700,100,"NORM(8E5,1E5)",Variable1 * Variable2
+Drug Discovery,4,Pre-Clinical,1460,Ethical concerns,"NORM(300,30)",900,150,"NORM(6E5,1E5)",Variable1 * Variable2
+Drug Discovery,5,Research,1460,Inadequate funding,"NORM(180,20)",500,50,"NORM(7E5,1E5)",Variable1 * Variable2
+Drug Discovery,6,Development,1460,Resource allocation issues,"NORM(220,30)",650,100,"NORM(4E5,1E5)",Variable1 * Variable2
+Drug Discovery,7,Pre-Clinical,1460,Data integrity issues,"NORM(270,40)",800,100,"NORM(5E5,1E5)",Variable1 * Variable2
+Drug Discovery,8,Research,1460,Personnel turnover,"NORM(230,20)",700,100,"NORM(3E5,1E5)",Variable1 * Variable2
+Drug Discovery,9,Pre-Clinical,1460,Animal model failure,"NORM(250,30)",750,100,"NORM(4E5,1E5)",Variable1 * Variable2
+Drug Discovery,10,Development,1460,Inadequate test results,"NORM(240,40)",700,100,"NORM(5E5,1E5)",Variable1 * Variable2

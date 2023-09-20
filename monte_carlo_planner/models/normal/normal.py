@@ -1,5 +1,5 @@
 from typing import List 
-from box_muller import box_muller
+from monte_carlo_planner.models.normal.box_muller import *
 
 def normal_distribution(num_samples:int,mean:float,std:float)->List[float]:
 
@@ -22,6 +22,7 @@ def normal_distribution(num_samples:int,mean:float,std:float)->List[float]:
         data.extend([x1, x2])
     return data
 
+"""
 import matplotlib.pyplot as plt
 # Initialize parameters
 mu = 0  # mean
@@ -36,3 +37,4 @@ plt.hist(data, bins=50, density=True, alpha=0.6, color='g')
 # Plot a standard normal distribution for comparison
 plt.show()  
 
+"""

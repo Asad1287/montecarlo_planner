@@ -3,7 +3,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from typing import List, Tuple
 # Load the shared library
-box_muller_lib = ctypes.CDLL('src\\normal\\box_muller.so')
+box_muller_lib = ctypes.CDLL('monte_carlo_planner\models\\normal\\box_muller.so')
 
 # Declare the return type and argument types of the C function
 box_muller_lib.box_muller.restype = None
