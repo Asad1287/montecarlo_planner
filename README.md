@@ -13,3 +13,5 @@ Versatility: This can be adapted for various industries like finance for portfol
 Ease-of-Use: Simple API and structure make it easy even for those not experts in simulation or the specific domain.
 
 ![Screenshot](excel_capture.JPG)
+
+![Screenshot](chart.png)
