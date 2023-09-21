@@ -1,3 +1,7 @@
+
+row_wise_input_file = 'risk_data.csv'
+column_wise_input_file = 'risk_data_column_wise.csv'
+
 install:
 	pip install --upgrade pip &&\
 		pip install -r requirements.txt
@@ -14,4 +18,11 @@ lint:
 hello:
 	echo "Hello, world!"
 
+run-row-wise:
+	python monte_carlo_planner/app/row_wise_runner.py $(row_wise_input_file)
+
+run-column-wise:
+	python monte_carlo_planner/app/column_wise_runner.py $(column_wise_input_file)
+
 all: install lint test
+
