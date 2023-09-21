@@ -4,31 +4,11 @@ import numpy as np
 from scipy.stats import norm, expon, lognorm, weibull_min, gamma
 from charts import *
 from scipy import stats
+import argparse
+import sys
+sys.path.append('G:\\montecarlo_planner\\monte_carlo_planner')
+from distr_parser.parserfunction import *
 
-url = "D:\RealProject\capital_planning_simulator\SampleData\\financial_plan.csv"
-
-df = pd.read_csv(url)
-
-def parse_distribution(distr_str):
-    # Remove spaces
-    distr_str = distr_str.replace(" ", "")
-    # Find the type of distribution
-    distr_type = distr_str.split("(")[0].upper()
-    # Extract parameters
-    params = [float(x) for x in distr_str.split("(")[1].rstrip(")").split(",")]
-    
-    if distr_type == "NORM":
-        return norm(loc=params[0], scale=params[1])
-    elif distr_type == "EXP":
-        return expon(scale=params[0])
-    elif distr_type == "LOGNORMAL":
-        return lognorm(params[0], scale=params[1])
-    elif distr_type == "WEIBULL":
-        return weibull_min(params[0], scale=params[1])
-    elif distr_type == "GAMMA":
-        return gamma(params[0], scale=params[1])
-    else:
-        raise ValueError(f"Unknown distribution type: {distr_type}")
 
 def apply_parsing_to_vector(vector:List[str]):
     return [parse_distribution(distr_str) for distr_str in vector]
@@ -129,7 +109,45 @@ test_input_object = {
         'operations': ['+','+']
         }
 
-test_result = run_simulations(test_input_object,iterations=1000)
-print(f"test_result: {test_result}")
 
-chart_output(test_result)
+
+def csv_to_dict(file_name: str) -> dict:
+    # Read the csv into a pandas DataFrame
+    df = pd.read_csv(file_name)
+    
+    # Convert the DataFrame into the desired dictionary structure
+    vector = df[['Var1', 'Var2', 'Operation']].values.tolist()
+    
+    # Separate operations from the vectors
+    operations = [row.pop(-1) for row in vector]
+    
+    # Prepare the final dictionary
+    input_object = {
+        'vector': vector,
+        'operations': operations[:-1]  # The last operation is not needed based on the provided example
+    }
+    
+    return input_object
+
+
+
+if __name__ == '__main__':
+    parser = argparse.ArgumentParser(description='Monte Carlo Planner')
+
+    
+    parser.add_argument('input_file', help='The input file.')
+   
+   
+    args = parser.parse_args()
+
+    # Set default values for arguments, if not provided.
+    
+    
+    args.input_file = args.input_file 
+   
+    input_object = csv_to_dict(args.input_file)
+    test_result = run_simulations(input_object,iterations=1000)
+    
+
+    chart_output(test_result)
+
