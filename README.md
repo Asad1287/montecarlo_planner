@@ -1,4 +1,4 @@
-# montecarlo_planner
+# Monte Carlo Planner
 Simple, fast simulations in various domains. Whether you are in finance, engineering, or any other field that requires risk analysis or decision-making under uncertainty, this tool can be your ally.
 
 Built to handle complex multivariable scenarios, this simulation package simplifies tasks like risk assessment, capital budgeting, financial analysis, and reliability analysis. Simple Fast Simulation is designed to be versatile and fast, allowing users to easily solve complicated problems.
