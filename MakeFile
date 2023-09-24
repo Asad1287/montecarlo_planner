@@ -1,6 +1,6 @@
 
-row_wise_input_file = 'risk_data.csv'
-column_wise_input_file = 'risk_data_column_wise.csv'
+row_wise_input_file = "G:\\montecarlo_planner\\data_samples\\risk_data.csv"
+column_wise_input_file = "G:\\montecarlo_planner\\data_samples\\risk_data.csv"
 
 install:
 	pip install --upgrade pip &&\
@@ -26,3 +26,5 @@ run-column-wise:
 
 all: install lint test
 
+streamlit:
+	streamlit run monte_carlo_planner/streamlit/app.py

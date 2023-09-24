@@ -1,5 +1,5 @@
-item,Var1,Var2,Operation
-Investments for Project A,"NORM(10,1)","NORM(10,1)",+
-Investments for Project B,"NORM(10,1)","NORM(10,1)",+
-Investments for Project C,"NORM(10,1)","NORM(10,1)",+
-
+item,Var1,Var2,Var3,Var4,Var5,Var6,Var7,Var8,Var9,Var10,Operation
+Revenues,"NORM(1000,1)","NORM(1000,1)","NORM(1000,1)","NORM(1000,1)","NORM(1000,1)","NORM(1000,1)","NORM(1000,1)","NORM(1000,1)","NORM(1000,1)","NORM(1000,1)",+
+Expenses,"NORM(1000,1)","NORM(1000,1)","NORM(1000,1)","NORM(1000,1)","NORM(1000,1)","NORM(1000,1)","NORM(1000,1)","NORM(1000,1)","NORM(1000,1)","NORM(1000,1)",-
+Fixed Revenues,"NORM(1000,1)","NORM(1000,1)","NORM(1000,1)","NORM(1000,1)","NORM(1000,1)","NORM(1000,1)","NORM(1000,1)","NORM(1000,1)","NORM(1000,1)","NORM(1000,1)",+
+Fixed Expenses,"NORM(1000,1)","NORM(1000,1)","NORM(1000,1)","NORM(1000,1)","NORM(1000,1)","NORM(1000,1)","NORM(1000,1)","NORM(1000,1)","NORM(1000,1)","NORM(1000,1)",-

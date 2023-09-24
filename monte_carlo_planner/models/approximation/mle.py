@@ -1,6 +1,6 @@
 import numpy as np
 from scipy.optimize import minimize
-
+from scipy import stats as ss 
 # Normal log-likelihood
 def normal_log_likelihood(params, data):
     mu, sigma = params
@@ -25,29 +25,44 @@ def exponential_log_likelihood(params, data):
     n = len(data)
     return - (n * np.log(lam) - lam * np.sum(data))
 
-def fit_distribution_mle(data, distr='normal'):
-    if distr == 'normal':
-        initial_params = [np.mean(data), np.std(data)]
-        result = minimize(normal_log_likelihood, initial_params, args=(data,))
-    elif distr == 'weibull':
-        initial_params = [1.0, 1.0]  # Arbitrary initial values
-        result = minimize(weibull_log_likelihood, initial_params, args=(data,))
-    elif distr == 'lognormal':
-        initial_params = [0.0, 1.0]  # Arbitrary initial values
-        result = minimize(lognormal_log_likelihood, initial_params, args=(data,))
-    elif distr == 'exponential':
-        initial_params = [1.0]  # Arbitrary initial value
-        result = minimize(exponential_log_likelihood, initial_params, args=(data,))
-    else:
-        raise ValueError("Unknown distribution")
+def fit_best_distribution(data):
+    """
+    Fit a list of distributions to the given data and return the best fitting distribution along with its parameters.
+    """
+    # Define the list of distributions to try
+    distributions = [ss.norm, ss.expon, ss.lognorm, ss.weibull_min]
+    
+    # Set up variables to store the best fitting distribution and its parameters
+    best_distribution = None
+    best_params = None
+    best_sse = np.inf
+    
+    # Estimate distribution parameters from data
+    for distribution in distributions:
+        # Try to fit the distribution
+        try:
+            # Ignore warnings from data that can't be fit
+            with np.errstate(all='ignore'):
+                params = distribution.fit(data)
+                arg = params[:-2]
+                loc = params[-2]
+                scale = params[-1]
+                
+                # Calculate the sum of squared error (SSE) for the fitted distribution
+                pdf = distribution.pdf(data, loc=loc, scale=scale, *arg)
+                sse = np.sum((pdf - data)**2)
+                
+                # If the SSE is smaller than the best one so far, store this distribution and its parameters
+                if sse < best_sse:
+                    best_distribution = distribution
+                    best_params = params
+                    best_sse = sse
+                    
+        except Exception as e:
+            print(f"Error fitting {distribution.name}: {e}")
+            pass
+    
+        resultstring = f"Best fit distribution: {best_distribution.name} with parameters {best_params}"
+    return resultstring
 
-    # Extract optimized parameters
-    params_optimized = result.x
-    return f"{distr.capitalize()}({', '.join(map(lambda x: f'{x:.2f}', params_optimized))})"
 
-# Example data
-data = np.array([8.9, 9.8, 10.5, 10.1, 9.9, 9.7, 10.2, 10.0, 9.8])
-
-# Fit different distributions
-for distr in ['normal', 'weibull', 'lognormal', 'exponential']:
-    print(f"Best-fit for {distr}: {fit_distribution_mle(data, distr=distr)}")

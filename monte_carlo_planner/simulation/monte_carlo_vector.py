@@ -1,8 +1,17 @@
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy.stats import norm, expon, lognorm, weibull_min, gamma
-import sys 
-sys.path.append('G:\\montecarlo_planner\\monte_carlo_planner')
+import sys
+import os
+
+# Get the current script's directory
+current_directory = os.path.dirname(os.path.realpath(__file__))
+
+# Get the parent directory
+parent_directory = os.path.abspath(os.path.join(current_directory, os.pardir))
+
+# Append the parent directory to sys.path
+sys.path.append(parent_directory)
 
 
 from models.approximation.generate_summaries import *
