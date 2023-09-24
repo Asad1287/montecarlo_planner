@@ -12,6 +12,22 @@ Versatility: This can be adapted for various industries like finance for portfol
 
 Ease-of-Use: Simple API and structure make it easy even for those not experts in simulation or the specific domain.
 
+A. The solution can used using streamlit app to estimate a complex probabilistic expression, for example compute NORM(50,1) + NORM(50,1)
+![Screenshot](streamlit.JPG)
+
+Run using the make file 
+make streamlit
+
+B. The solution can also be used directly with Excel, for example, the following example of a probabilistic risk analysis estimation exercise in Excel
+
+In excel we can differentiate the way the variable are arranged either row-wise meaning each column will have different variables and column wise, like each row will have differtn variables
+
 ![Screenshot](excel_capture.JPG)
+Run using the makefile the following. 
+
+1. First update the location of file in make file
+2. Run by using make file
+3. make run-column-wise 
+4. make run-row-wise
 
 ![Screenshot](chart.png)
